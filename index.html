@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Comparativo: Banco vs DAP vs Depto de Inversión | Plaza Brokers</title>
+<style>
+  /* =========================================================
+     PALETA PLAZA BROKERS
+     - Azul principal:   #1E88FF
+     - Azul oscuro:      #0E5BC7
+     - Negro estructura: #111418
+     - Gris carbón:      #1F242B
+     - Amarillo acento:  #F5B82E
+     - Crema fondo:      #FAF8F4
+     ========================================================= */
+
+  :root {
+    --azul: #1E88FF;
+    --azul-dark: #0E5BC7;
+    --azul-soft: #E6F1FF;
+    --negro: #111418;
+    --carbon: #1F242B;
+    --gris-300: #D9DEE5;
+    --gris-500: #6B7480;
+    --amarillo: #F5B82E;
+    --amarillo-dark: #C99100;
+    --crema: #FAF8F4;
+    --rojo: #D64545;
+    --verde: #1E9C5C;
+    --shadow-sm: 0 2px 8px rgba(17, 20, 24, 0.06);
+    --shadow-md: 0 8px 24px rgba(17, 20, 24, 0.10);
+    --shadow-lg: 0 16px 48px rgba(17, 20, 24, 0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--crema);
+    color: var(--negro);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    background: var(--negro);
+    color: white;
+    padding: 18px 24px;
+    border-bottom: 4px solid var(--azul);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-mark {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-dark) 100%);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; color: white; letter-spacing: -0.5px;
+    box-shadow: 0 0 0 3px rgba(30,136,255,0.18);
+  }
+  .brand-mark::after { content: '◆'; color: var(--amarillo); position: absolute; transform: translate(8px, 8px); font-size: 9px; }
+  .brand-text { font-weight: 700; font-size: 17px; letter-spacing: -0.3px; }
+  .brand-text small { display: block; font-weight: 400; font-size: 11px; color: var(--gris-300); letter-spacing: 0.5px; text-transform: uppercase; }
+  .header-tag {
+    font-size: 12px; color: var(--gris-300);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 12px; border-radius: 999px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(180deg, white 0%, var(--crema) 100%);
+    padding: 48px 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--gris-300);
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+    color: var(--azul-dark); text-transform: uppercase;
+    background: var(--azul-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -1.2px; color: var(--negro); margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--azul);
+    background: linear-gradient(180deg, transparent 65%, rgba(245,184,46,0.35) 65%);
+  }
+  .hero p {
+    font-size: 17px; color: var(--gris-500); max-width: 640px; margin: 0 auto;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .container {
+    max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px;
+  }
+
+  /* ---------- INPUT CARD ---------- */
+  .input-card {
+    background: white; border-radius: 16px; padding: 32px;
+    box-shadow: var(--shadow-md); border: 1px solid var(--gris-300);
+    margin-bottom: 32px;
+    position: relative; overflow: hidden;
+  }
+  .input-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--azul) 0%, var(--amarillo) 100%);
+  }
+  .input-card h2 {
+    font-size: 20px; font-weight: 700; margin-bottom: 4px; color: var(--negro);
+    letter-spacing: -0.4px;
+  }
+  .input-card .subtitle {
+    color: var(--gris-500); font-size: 14px; margin-bottom: 24px;
+  }
+  .input-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;
+  }
+  .field label {
+    display: block; font-size: 13px; font-weight: 600; color: var(--negro);
+    margin-bottom: 6px; letter-spacing: -0.1px;
+  }
+  .field label .hint { color: var(--gris-500); font-weight: 400; font-size: 12px; }
+  .input-wrap { position: relative; }
+  .input-wrap .prefix {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--gris-500); font-weight: 600; font-size: 15px; pointer-events: none;
+  }
+  .input-wrap input, .input-wrap select {
+    width: 100%; padding: 13px 14px 13px 32px;
+    border: 1.5px solid var(--gris-300); border-radius: 10px;
+    background: var(--crema); font-size: 15px; font-weight: 600; color: var(--negro);
+    font-family: inherit; transition: all 0.15s ease; outline: none;
+  }
+  .input-wrap select { padding-left: 14px; cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%231F242B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+  }
+  .input-wrap input:focus, .input-wrap select:focus {
+    border-color: var(--azul); background: white;
+    box-shadow: 0 0 0 4px rgba(30,136,255,0.12);
+  }
+  .actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 10px; font-weight: 700; font-size: 14px;
+    border: none; cursor: pointer; transition: all 0.15s ease; font-family: inherit;
+    letter-spacing: 0.2px;
+  }
+  .btn-primary {
+    background: var(--azul); color: white;
+    box-shadow: 0 4px 12px rgba(30,136,255,0.32);
+  }
+  .btn-primary:hover { background: var(--azul-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(30,136,255,0.4); }
+  .btn-ghost { background: transparent; color: var(--gris-500); padding: 13px 8px; }
+  .btn-ghost:hover { color: var(--negro); }
+
+  .hint-line {
+    margin-top: 14px; font-size: 12px; color: var(--gris-500);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .hint-line::before {
+    content: 'ℹ'; display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; background: var(--azul-soft); color: var(--azul-dark);
+    border-radius: 50%; font-size: 10px; font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ---------- RESULTS ---------- */
+  .results-section { display: none; animation: fadeUp 0.5s ease; }
+  .results-section.show { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- WINNER BANNER ---------- */
+  .winner {
+    background: linear-gradient(135deg, var(--negro) 0%, var(--carbon) 100%);
+    color: white; border-radius: 16px; padding: 28px 32px; margin-bottom: 28px;
+    position: relative; overflow: hidden; box-shadow: var(--shadow-lg);
+  }
+  .winner::before {
+    content: ''; position: absolute; right: -80px; top: -80px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(30,136,255,0.25) 0%, transparent 70%);
+  }
+  .winner::after {
+    content: ''; position: absolute; left: -40px; bottom: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(245,184,46,0.18) 0%, transparent 70%);
+  }
+  .winner-inner { position: relative; z-index: 1; }
+  .winner .label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--amarillo); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .winner .head { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.2; letter-spacing: -0.7px; margin-bottom: 6px; }
+  .winner .head .num { color: var(--azul); }
+  .winner .sub { color: rgba(255,255,255,0.7); font-size: 15px; }
+
+  /* ---------- CARDS GRID ---------- */
+  .cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 32px;
+  }
+  @media (max-width: 880px) { .cards { grid-template-columns: 1fr; } }
+
+  .card {
+    background: white; border-radius: 14px; padding: 24px;
+    box-shadow: var(--shadow-sm); border: 1.5px solid var(--gris-300);
+    position: relative; transition: all 0.2s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  .card.banco { border-top: 4px solid var(--rojo); }
+  .card.dap   { border-top: 4px solid var(--gris-500); }
+  .card.depto { border-top: 4px solid var(--azul); background: linear-gradient(180deg, white 0%, rgba(30,136,255,0.03) 100%); }
+  .card.depto::after {
+    content: '★ Mejor opción'; position: absolute; top: -10px; right: 16px;
+    background: var(--amarillo); color: var(--negro);
+    font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 6px; box-shadow: 0 2px 6px rgba(245,184,46,0.4);
+  }
+
+  .card-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 14px;
+  }
+  .card.banco .card-icon { background: rgba(214,69,69,0.1); color: var(--rojo); }
+  .card.dap   .card-icon { background: rgba(107,116,128,0.12); color: var(--carbon); }
+  .card.depto .card-icon { background: var(--azul-soft); color: var(--azul-dark); }
+
+  .card h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 2px; }
+  .card .tag { font-size: 12px; color: var(--gris-500); margin-bottom: 18px; font-weight: 500; }
+
+  .metric-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px dashed var(--gris-300); font-size: 13px;
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-row .key { color: var(--gris-500); font-weight: 500; }
+  .metric-row .val { font-weight: 700; color: var(--negro); font-variant-numeric: tabular-nums; }
+
+  .final-value {
+    margin-top: 18px; padding-top: 18px; border-top: 2px solid var(--gris-300);
+  }
+  .final-value .lbl { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gris-500); text-transform: uppercase; margin-bottom: 4px; }
+  .final-value .num {
+    font-size: 26px; font-weight: 800; letter-spacing: -1px; color: var(--negro);
+    font-variant-numeric: tabular-nums; line-height: 1.1;
+  }
+  .card.depto .final-value .num { color: var(--azul); }
+  .card.banco .final-value .num { color: var(--rojo); }
+  .final-value .delta { font-size: 12px; margin-top: 4px; font-weight: 600; }
+  .final-value .delta.up   { color: var(--verde); }
+  .final-value .delta.down { color: var(--rojo); }
+
+  /* ---------- CHART SECTION ---------- */
+  .chart-card {
+    background: white; border-radius: 16px; padding: 28px; margin-bottom: 28px;
+    box-shadow: var(--shadow-sm); border: 1px solid var(--gris-300);
+  }
+  .chart-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 14px; margin-bottom: 20px;
+  }
+  .chart-head h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.4px; }
+  .chart-head p { font-size: 13px; color: var(--gris-500); margin-top: 2px; }
+  .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+  .lg-item { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--carbon); }
+  .lg-dot { width: 12px; height: 12px; border-radius: 3px; }
+  .lg-dot.banco { background: var(--rojo); }
+  .lg-dot.dap   { background: var(--gris-500); }
+  .lg-dot.depto { background: var(--azul); }
+
+  .chart-wrap { width: 100%; height: 380px; position: relative; }
+  .chart-svg { width: 100%; height: 100%; display: block; }
+  .chart-svg .grid-line { stroke: var(--gris-300); stroke-width: 1; stroke-dasharray: 3 3; }
+  .chart-svg .axis-text { font-size: 11px; fill: var(--gris-500); font-weight: 500; }
+  .chart-svg .axis-line { stroke: var(--carbon); stroke-width: 1.5; }
+  .chart-svg .line-banco { stroke: var(--rojo); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .chart-svg .line-dap   { stroke: var(--gris-500); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 6 4; }
+  .chart-svg .line-depto { stroke: var(--azul); stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .chart-svg .area-depto { fill: url(#gradAzul); opacity: 0.18; }
+  .chart-svg .end-label {
+    font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums;
+  }
+  .chart-svg .end-dot { stroke: white; stroke-width: 2; }
+
+  /* ---------- TABLE ---------- */
+  .table-card {
+    background: white; border-radius: 16px; padding: 28px; margin-bottom: 28px;
+    box-shadow: var(--shadow-sm); border: 1px solid var(--gris-300); overflow-x: auto;
+  }
+  .table-card h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 4px; }
+  .table-card .desc { font-size: 13px; color: var(--gris-500); margin-bottom: 18px; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums;
+  }
+  th {
+    text-align: right; padding: 12px 10px; font-weight: 700; color: var(--gris-500);
+    border-bottom: 2px solid var(--gris-300); font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  th:first-child { text-align: left; }
+  td {
+    text-align: right; padding: 11px 10px; border-bottom: 1px solid var(--gris-300);
+    color: var(--negro); font-weight: 600;
+  }
+  td:first-child { text-align: left; font-weight: 700; color: var(--carbon); }
+  tr:hover td { background: var(--crema); }
+  td.depto-col { color: var(--azul-dark); font-weight: 800; }
+
+  /* ---------- ASSUMPTIONS ---------- */
+  .assumptions {
+    background: var(--negro); color: rgba(255,255,255,0.85); border-radius: 14px;
+    padding: 26px 28px; margin-bottom: 28px;
+  }
+  .assumptions h4 {
+    color: white; font-size: 14px; font-weight: 700; margin-bottom: 14px;
+    letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+  }
+  .assumptions h4::before { content: ''; width: 4px; height: 14px; background: var(--amarillo); border-radius: 2px; }
+  .assumptions-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px 22px;
+    font-size: 12.5px; line-height: 1.6;
+  }
+  .assumptions-grid div strong { color: var(--amarillo); font-weight: 700; }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-dark) 100%);
+    color: white; border-radius: 16px; padding: 36px; text-align: center;
+    box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+  }
+  .cta::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(245,184,46,0.4) 0%, transparent 70%);
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta h3 { font-size: clamp(22px, 3vw, 28px); font-weight: 800; letter-spacing: -0.7px; margin-bottom: 8px; }
+  .cta p { color: rgba(255,255,255,0.85); margin-bottom: 22px; font-size: 15px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--amarillo); color: var(--negro);
+    padding: 15px 30px; border-radius: 10px; font-weight: 800; font-size: 15px;
+    text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer;
+    font-family: inherit; box-shadow: 0 6px 20px rgba(245,184,46,0.4);
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(245,184,46,0.5); }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    text-align: center; padding: 26px 24px;
+    color: var(--gris-500); font-size: 12px; line-height: 1.7;
+    border-top: 1px solid var(--gris-300); background: white;
+  }
+
+  /* ---------- ERROR ---------- */
+  .error-msg {
+    background: #FEE; border: 1.5px solid var(--rojo); color: var(--rojo);
+    padding: 12px 16px; border-radius: 10px; font-size: 13px; font-weight: 600;
+    margin-top: 14px; display: none;
+  }
+  .error-msg.show { display: block; }
+
+  @media (max-width: 600px) {
+    .input-card, .chart-card, .table-card, .winner, .cta { padding: 22px; }
+    .cards { gap: 14px; }
+    .header-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div class="brand-text">
+        Plaza Brokers
+        <small>Inversión Inmobiliaria</small>
+      </div>
+    </div>
+    <div class="header-tag">Datos Mayo 2026 · Mercado Chile</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Comparativo a 20 años</span>
+    <h1>¿Tu plata en el banco, en un DAP o en un <em>depto de inversión</em>?</h1>
+    <p>Ingresa el monto que tienes ahorrado y descubre cuánto valdría tu capital en 20 años en cada escenario, calculado con los datos reales del mercado chileno actualizado a mayo 2026.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- INPUT -->
+  <div class="input-card">
+    <h2>Ingresa tu información</h2>
+    <p class="subtitle">Estos son los únicos datos que necesitas para correr la simulación.</p>
+
+    <div class="input-grid">
+      <div class="field">
+        <label for="capital">Capital disponible <span class="hint">(CLP)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" id="capital" inputmode="numeric" placeholder="20.000.000" value="20.000.000" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="ciudad">Ciudad de inversión</label>
+        <div class="input-wrap">
+          <select id="ciudad">
+            <option value="santiago">Gran Santiago</option>
+            <option value="concepcion" selected>Gran Concepción</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="aporte">Aporte mensual extra <span class="hint">(opcional)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" id="aporte" inputmode="numeric" placeholder="0" value="0" />
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="calcBtn">Ver mi comparativo →</button>
+      <button class="btn btn-ghost" id="resetBtn">Reiniciar</button>
+    </div>
+
+    <div class="hint-line">El capital mínimo recomendado para invertir en depto es ~$15.000.000 CLP (pie del 20% sobre 1.700 UF).</div>
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-section" id="results">
+
+    <!-- WINNER -->
+    <div class="winner">
+      <div class="winner-inner">
+        <div class="label">Resultado proyectado a 20 años</div>
+        <div class="head">
+          Invirtiendo en depto, tu capital crece a <span class="num" id="winValue">—</span>
+        </div>
+        <div class="sub" id="winSub">Eso es <span id="winMultiple">—</span> veces más que dejarlo en el banco.</div>
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+      <!-- BANCO -->
+      <div class="card banco">
+        <div class="card-icon">🏦</div>
+        <h3>Cuenta de ahorro</h3>
+        <div class="tag">Tu plata "guardada" en el banco</div>
+        <div class="metric-row"><span class="key">Rentabilidad nominal</span><span class="val">~0,5% anual</span></div>
+        <div class="metric-row"><span class="key">Rentabilidad real</span><span class="val" style="color:var(--rojo);">−5,0% anual</span></div>
+        <div class="metric-row"><span class="key">Riesgo</span><span class="val">Bajo (nominal)</span></div>
+        <div class="metric-row"><span class="key">Liquidez</span><span class="val">Inmediata</span></div>
+        <div class="final-value">
+          <div class="lbl">En 20 años (poder de compra)</div>
+          <div class="num" id="bancoFinal">—</div>
+          <div class="delta down" id="bancoDelta">—</div>
+        </div>
+      </div>
+
+      <!-- DAP -->
+      <div class="card dap">
+        <div class="card-icon">📜</div>
+        <h3>Depósito a Plazo (DAP)</h3>
+        <div class="tag">Renovado cada año en CLP</div>
+        <div class="metric-row"><span class="key">Tasa nominal</span><span class="val">4,44% anual</span></div>
+        <div class="metric-row"><span class="key">Tasa real (vs IPC)</span><span class="val" style="color:var(--rojo);">~0% / negativa</span></div>
+        <div class="metric-row"><span class="key">Riesgo</span><span class="val">Bajo</span></div>
+        <div class="metric-row"><span class="key">Liquidez</span><span class="val">30–360 días</span></div>
+        <div class="final-value">
+          <div class="lbl">En 20 años (poder de compra)</div>
+          <div class="num" id="dapFinal">—</div>
+          <div class="delta down" id="dapDelta">—</div>
+        </div>
+      </div>
+
+      <!-- DEPTO -->
+      <div class="card depto">
+        <div class="card-icon">🏢</div>
+        <h3>Depto de inversión</h3>
+        <div class="tag">Apalancado con crédito hipotecario</div>
+        <div class="metric-row"><span class="key">Cap rate bruto</span><span class="val" id="capRate">5,0%</span></div>
+        <div class="metric-row"><span class="key">Plusvalía real anual</span><span class="val" id="plusvalia">+4,5%</span></div>
+        <div class="metric-row"><span class="key">Apalancamiento</span><span class="val">5x (pie 20%)</span></div>
+        <div class="metric-row"><span class="key">Cobertura inflación</span><span class="val" style="color:var(--verde);">Sí (UF)</span></div>
+        <div class="final-value">
+          <div class="lbl">Patrimonio neto en 20 años</div>
+          <div class="num" id="deptoFinal">—</div>
+          <div class="delta up" id="deptoDelta">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div class="chart-card">
+      <div class="chart-head">
+        <div>
+          <h3>Evolución del capital año a año</h3>
+          <p>Valor de tu inversión en cada escenario, en pesos chilenos de hoy (poder de compra real).</p>
+        </div>
+        <div class="chart-legend">
+          <div class="lg-item"><span class="lg-dot banco"></span>Banco</div>
+          <div class="lg-item"><span class="lg-dot dap"></span>DAP</div>
+          <div class="lg-item"><span class="lg-dot depto"></span>Depto inversión</div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg class="chart-svg" id="chart" viewBox="0 0 800 380" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-card">
+      <h3>Detalle año a año</h3>
+      <p class="desc">Valor proyectado de tu capital en cada escenario, en CLP de poder de compra actual.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Banco</th>
+            <th>DAP</th>
+            <th>Depto inversión</th>
+            <th>Diferencia depto vs banco</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- ASSUMPTIONS -->
+    <div class="assumptions">
+      <h4>Supuestos del cálculo (datos mayo 2026)</h4>
+      <div class="assumptions-grid">
+        <div><strong>UF actual:</strong> $40.226 (BCCh, 8 may 2026)</div>
+        <div><strong>Inflación proyectada:</strong> 5,5% anual promedio</div>
+        <div><strong>DAP nominal:</strong> 4,44% (BICE/Santander)</div>
+        <div><strong>Tasa hipotecaria:</strong> 4,06% UF (promedio mercado)</div>
+        <div><strong>Pie hipotecario:</strong> 20% del valor</div>
+        <div><strong>Plazo crédito:</strong> 25 años</div>
+        <div><strong>Cap rate bruto:</strong> 5,9% Stgo / 5,0% Conce</div>
+        <div><strong>Vacancia:</strong> 1 mes/año (8,3%)</div>
+        <div><strong>Gastos comunes + corretaje:</strong> ~12% del canon</div>
+        <div><strong>Plusvalía real anual:</strong> 4,5% promedio</div>
+        <div><strong>Costos compra:</strong> 3% del valor</div>
+        <div><strong>Comisión venta a 20 años:</strong> 2% + IVA</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <div class="cta-inner">
+        <h3>¿Quieres este análisis con tus números reales y un proyecto concreto?</h3>
+        <p>Te enviamos un comparativo personalizado con departamentos disponibles que calzan con tu capital.</p>
+        <button class="cta-btn" id="ctaBtn">Quiero hablar con un asesor →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <strong>Plaza Brokers</strong> · Inversión inmobiliaria con datos reales<br>
+  Cálculo referencial. Los resultados dependen del proyecto, comuna y condiciones del crédito específico.<br>
+  Datos basados en informe de mercado al 8 de mayo de 2026 · DeptoScore, BCCh, INE, CChC.
+</footer>
+
+<script>
+/* ============================================================
+   CALCULADOR — COMPARATIVO 20 AÑOS
+   ============================================================ */
+
+const HORIZONTE = 20;             // años
+const INFLACION = 0.055;          // 5,5% anual proyectado (línea con IPC abril 2026 anualizado)
+
+// Banco — cuenta vista, ~0,5% nominal
+const BANCO_NOMINAL = 0.005;
+
+// DAP — 4,44% nominal a 360 días (BICE/Santander, mayo 2026)
+const DAP_NOMINAL   = 0.0444;
+
+// Tasa hipotecaria — 4,06% promedio mercado en UF (fija)
+const TASA_HIPO_UF  = 0.0406;
+const PLAZO_HIPO    = 25;          // años (estándar inversión)
+const PIE_PCT       = 0.20;        // 20%
+const COSTOS_COMPRA = 0.03;        // 3% (notaría, conservador, corretaje, gastos)
+
+// Datos por ciudad
+const CIUDADES = {
+  santiago: {
+    nombre: 'Gran Santiago',
+    capRateBruto: 0.059,           // 5,9% mediano 1D1B
+    capRateLabel: '5,9%',
+    plusvalia: 0.045,              // 4,5% real anual (rango 3-5,5%)
+    plusvaliaLabel: '+4,5%',
+    valorUF: 2200                  // UF promedio 1D1B (rango Stgo Centro/Ñuñoa)
+  },
+  concepcion: {
+    nombre: 'Gran Concepción',
+    capRateBruto: 0.050,           // 5,0% bruto promedio Concepción
+    capRateLabel: '5,0%',
+    plusvalia: 0.05,               // alza fuerte por escasez (San Pedro, Chiguayante)
+    plusvaliaLabel: '+5,0%',
+    valorUF: 1900                  // UF promedio 1D1B Concepción
+  }
+};
+
+// Costos operativos del depto (% del canon)
+const VACANCIA_PCT      = 0.083;   // 1 mes/año
+const GC_PCT_CANON      = 0.07;    // gastos comunes en períodos vacancia + mantención
+const ADMIN_PCT_CANON   = 0.05;    // administración profesional
+const CORRETAJE_AÑO     = 0.50/24; // 50% canon cada 2 años (rotación) prorrateado mensual = ~2,1%
+// Total descuentos sobre canon bruto:
+const COSTOS_OPERATIVOS = VACANCIA_PCT + GC_PCT_CANON + ADMIN_PCT_CANON + CORRETAJE_AÑO; // ~22,4%
+
+const UF_VALOR = 40226;
+
+/* =========================
+   FORMATOS
+========================= */
+const fmtCLP = n => '$' + Math.round(n).toLocaleString('es-CL');
+const fmtCLPCorto = n => {
+  if (n >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + Math.round(n);
+};
+const parseNum = str => Number(String(str).replace(/[^\d]/g, '')) || 0;
+const formatInputCLP = el => {
+  const n = parseNum(el.value);
+  el.value = n ? n.toLocaleString('es-CL') : '';
+};
+
+/* =========================
+   CÁLCULO DE DIVIDENDO HIPOTECARIO
+========================= */
+function dividendoMensual(montoCredito, tasaAnual, plazoAños) {
+  const i = tasaAnual / 12;
+  const n = plazoAños * 12;
+  return montoCredito * i * Math.pow(1+i, n) / (Math.pow(1+i, n) - 1);
+}
+
+/* =========================
+   ESCENARIO 1: BANCO
+   El usuario simplemente deja el dinero en cuenta vista.
+   Real = nominal - inflación. Pierde poder de compra.
+========================= */
+function calcBanco(capital, aporteMes) {
+  // tasa real anual
+  const real = (1 + BANCO_NOMINAL) / (1 + INFLACION) - 1;
+  const data = [{ año: 0, valor: capital }];
+  let v = capital;
+  for (let y = 1; y <= HORIZONTE; y++) {
+    v = v * (1 + real) + aporteMes * 12;
+    data.push({ año: y, valor: v });
+  }
+  return data;
+}
+
+/* =========================
+   ESCENARIO 2: DAP
+   Renovado cada año. 4,44% nominal.
+========================= */
+function calcDAP(capital, aporteMes) {
+  const real = (1 + DAP_NOMINAL) / (1 + INFLACION) - 1;
+  const data = [{ año: 0, valor: capital }];
+  let v = capital;
+  for (let y = 1; y <= HORIZONTE; y++) {
+    v = v * (1 + real) + aporteMes * 12;
+    data.push({ año: y, valor: v });
+  }
+  return data;
+}
+
+/* =========================
+   ESCENARIO 3: DEPTO DE INVERSIÓN
+   - Capital se usa como pie (20%) + costos compra (3%)
+   - Resto financiado a 25 años en UF al 4,06%
+   - Cada año:
+     · El depto se valoriza a tasa real de plusvalía
+     · El canon de arriendo (cap rate * valor) menos costos operativos ENTRA al flujo
+     · Se paga el dividendo (en UF, mantiene valor real constante)
+     · El excedente o déficit se acumula como flujo
+   - Patrimonio neto = valor del depto + flujo acumulado − saldo deuda
+   - Al final: descuenta 2% comisión de venta + IVA si quisieras vender
+========================= */
+function calcDepto(capital, aporteMes, ciudad) {
+  const C = CIUDADES[ciudad];
+
+  // Cuánto depto puedo comprar
+  // Capital = 20% precio + 3% costos => Capital = 0.23 * precio
+  const precioInmuebleCLP = capital / (PIE_PCT + COSTOS_COMPRA);
+  const precioUF = precioInmuebleCLP / UF_VALOR;
+  const credito = precioInmuebleCLP * (1 - PIE_PCT);
+
+  // Dividendo mensual en CLP (asumimos UF estable para simulación en CLP reales)
+  const divMensual = dividendoMensual(credito, TASA_HIPO_UF, PLAZO_HIPO);
+
+  // Canon mensual = cap rate * valor / 12
+  let valorActualReal = precioInmuebleCLP;
+  let canonMensual = (C.capRateBruto * valorActualReal) / 12;
+
+  // Saldo deuda inicial
+  let saldoDeuda = credito;
+  const tasaMes = TASA_HIPO_UF / 12;
+
+  // Flujo acumulado en CLP reales (caja del inversionista)
+  let cajaAcumulada = 0;
+
+  const data = [{
+    año: 0,
+    valor: capital,            // patrimonio neto inicial = lo que aportaste
+    valorDepto: precioInmuebleCLP,
+    saldoDeuda: credito,
+    caja: 0
+  }];
+
+  for (let y = 1; y <= HORIZONTE; y++) {
+    // Plusvalía real anual
+    valorActualReal = valorActualReal * (1 + C.plusvalia);
+    // El canon también sube con plusvalía/UF (real)
+    canonMensual = (C.capRateBruto * valorActualReal) / 12;
+
+    // Flujo del año
+    const ingresosBrutos = canonMensual * 12;
+    const ingresosNetos  = ingresosBrutos * (1 - COSTOS_OPERATIVOS);
+
+    // Pago dividendos del año (en CLP reales = UF)
+    let pagoDividendos = 0;
+    for (let m = 1; m <= 12; m++) {
+      const interes = saldoDeuda * tasaMes;
+      const amortizacion = divMensual - interes;
+      saldoDeuda = Math.max(0, saldoDeuda - amortizacion);
+      pagoDividendos += divMensual;
+      if (saldoDeuda <= 0) break;
+    }
+    // Si ya pagó, no hay más dividendos
+    if (saldoDeuda <= 0 && y * 12 > PLAZO_HIPO * 12) {
+      pagoDividendos = 0;
+    }
+
+    // Flujo neto del año
+    const flujoAño = ingresosNetos - pagoDividendos + (aporteMes * 12);
+
+    // La caja se reinvierte (asumamos en DAP real = ~0%, conservador, NO se reinvierte agresivo)
+    cajaAcumulada = cajaAcumulada * 1.0 + flujoAño;
+    // Si la caja es negativa, asumimos que aporta el inversionista (déficit cubierto)
+
+    // Patrimonio neto = valor del depto + caja − deuda
+    const patrimonio = valorActualReal + cajaAcumulada - saldoDeuda;
+
+    data.push({
+      año: y,
+      valor: patrimonio,
+      valorDepto: valorActualReal,
+      saldoDeuda: saldoDeuda,
+      caja: cajaAcumulada
+    });
+  }
+
+  return data;
+}
+
+/* =========================
+   RENDER
+========================= */
+let charts = { banco: [], dap: [], depto: [] };
+
+function render() {
+  const capital = parseNum(document.getElementById('capital').value);
+  const aporte  = parseNum(document.getElementById('aporte').value);
+  const ciudad  = document.getElementById('ciudad').value;
+  const errEl   = document.getElementById('errorMsg');
+
+  errEl.classList.remove('show');
+
+  if (capital < 5000000) {
+    errEl.textContent = 'Ingresa al menos $5.000.000 para correr la simulación.';
+    errEl.classList.add('show');
+    return;
+  }
+
+  const banco = calcBanco(capital, aporte);
+  const dap   = calcDAP(capital, aporte);
+  const depto = calcDepto(capital, aporte, ciudad);
+
+  charts.banco = banco;
+  charts.dap   = dap;
+  charts.depto = depto;
+
+  // Cards
+  const C = CIUDADES[ciudad];
+  document.getElementById('capRate').textContent = C.capRateLabel;
+  document.getElementById('plusvalia').textContent = C.plusvaliaLabel;
+
+  const finalBanco = banco[HORIZONTE].valor;
+  const finalDAP   = dap[HORIZONTE].valor;
+  const finalDepto = depto[HORIZONTE].valor;
+
+  document.getElementById('bancoFinal').textContent = fmtCLP(finalBanco);
+  document.getElementById('dapFinal').textContent   = fmtCLP(finalDAP);
+  document.getElementById('deptoFinal').textContent = fmtCLP(finalDepto);
+
+  // Deltas
+  const dBanco = ((finalBanco / capital) - 1) * 100;
+  const dDAP   = ((finalDAP / capital) - 1) * 100;
+  const dDepto = ((finalDepto / capital) - 1) * 100;
+
+  document.getElementById('bancoDelta').textContent = (dBanco>=0?'+':'') + dBanco.toFixed(1) + '% vs capital inicial';
+  document.getElementById('dapDelta').textContent   = (dDAP>=0?'+':'') + dDAP.toFixed(1) + '% vs capital inicial';
+  document.getElementById('deptoDelta').textContent = '+' + dDepto.toFixed(1) + '% vs capital inicial';
+
+  // Winner banner
+  document.getElementById('winValue').textContent = fmtCLP(finalDepto);
+  const multiple = finalDepto / Math.max(finalBanco, 1);
+  document.getElementById('winMultiple').textContent = multiple.toFixed(1);
+
+  // Chart
+  drawChart(banco, dap, depto);
+
+  // Table
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  const yearsToShow = [0, 1, 3, 5, 7, 10, 13, 15, 18, 20];
+  yearsToShow.forEach(y => {
+    const tr = document.createElement('tr');
+    const diff = depto[y].valor - banco[y].valor;
+    tr.innerHTML = `
+      <td>${y === 0 ? 'Hoy' : 'Año ' + y}</td>
+      <td>${fmtCLP(banco[y].valor)}</td>
+      <td>${fmtCLP(dap[y].valor)}</td>
+      <td class="depto-col">${fmtCLP(depto[y].valor)}</td>
+      <td style="color:${diff>=0?'var(--verde)':'var(--rojo)'}; font-weight:800;">${diff>=0?'+':''}${fmtCLP(diff)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Show
+  document.getElementById('results').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+/* =========================
+   GRÁFICO SVG
+========================= */
+function drawChart(banco, dap, depto) {
+  const svg = document.getElementById('chart');
+  const W = 800, H = 380;
+  const M = { top: 24, right: 80, bottom: 38, left: 70 };
+  const cw = W - M.left - M.right;
+  const ch = H - M.top - M.bottom;
+
+  // Eje X: años 0..20
+  const maxX = HORIZONTE;
+  // Eje Y: max valor entre los 3, redondeado
+  const allValues = [...banco, ...dap, ...depto].map(d => d.valor);
+  const minV = Math.min(0, ...allValues);
+  const maxV = Math.max(...allValues) * 1.08;
+  const range = maxV - minV;
+
+  const x = i => M.left + (i / maxX) * cw;
+  const y = v => M.top + ch - ((v - minV) / range) * ch;
+
+  // Grid Y (5 líneas)
+  let grid = '';
+  for (let g = 0; g <= 5; g++) {
+    const yv = minV + (range * g / 5);
+    const yp = y(yv);
+    grid += `<line class="grid-line" x1="${M.left}" y1="${yp}" x2="${M.left+cw}" y2="${yp}"/>`;
+    grid += `<text class="axis-text" x="${M.left-10}" y="${yp+4}" text-anchor="end">${fmtCLPCorto(yv)}</text>`;
+  }
+
+  // Eje X labels (cada 5 años)
+  let xLabels = '';
+  for (let i = 0; i <= maxX; i += 5) {
+    xLabels += `<text class="axis-text" x="${x(i)}" y="${H-12}" text-anchor="middle">Año ${i}</text>`;
+  }
+  // Eje X
+  xLabels += `<line class="axis-line" x1="${M.left}" y1="${M.top+ch}" x2="${M.left+cw}" y2="${M.top+ch}"/>`;
+
+  // Path lines
+  const buildPath = arr => arr.map((d,i) => `${i===0?'M':'L'} ${x(d.año)} ${y(d.valor)}`).join(' ');
+
+  // Área del depto
+  const areaDepto = `M ${x(0)} ${y(depto[0].valor)} ` +
+    depto.map((d,i) => `L ${x(d.año)} ${y(d.valor)}`).join(' ') +
+    ` L ${x(HORIZONTE)} ${M.top+ch} L ${x(0)} ${M.top+ch} Z`;
+
+  // End points
+  const ep = (arr, color, lbl) => {
+    const last = arr[arr.length-1];
+    return `<circle class="end-dot" cx="${x(last.año)}" cy="${y(last.valor)}" r="5" fill="${color}"/>
+            <text class="end-label" x="${x(last.año)+10}" y="${y(last.valor)+4}" fill="${color}">${fmtCLPCorto(last.valor)}</text>`;
+  };
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="gradAzul" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1E88FF" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#1E88FF" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    ${grid}
+    ${xLabels}
+    <path class="area-depto" d="${areaDepto}"/>
+    <path class="line-banco" d="${buildPath(banco)}"/>
+    <path class="line-dap"   d="${buildPath(dap)}"/>
+    <path class="line-depto" d="${buildPath(depto)}"/>
+    ${ep(banco, '#D64545')}
+    ${ep(dap,   '#6B7480')}
+    ${ep(depto, '#1E88FF')}
+  `;
+}
+
+/* =========================
+   EVENT BINDING
+========================= */
+document.getElementById('capital').addEventListener('blur', e => formatInputCLP(e.target));
+document.getElementById('aporte').addEventListener('blur',  e => formatInputCLP(e.target));
+document.getElementById('capital').addEventListener('input', e => {
+  const n = parseNum(e.target.value);
+  e.target.value = n ? n.toLocaleString('es-CL') : '';
+});
+document.getElementById('aporte').addEventListener('input', e => {
+  const n = parseNum(e.target.value);
+  e.target.value = n ? n.toLocaleString('es-CL') : '';
+});
+
+document.getElementById('calcBtn').addEventListener('click', render);
+document.getElementById('ciudad').addEventListener('change', () => {
+  if (document.getElementById('results').classList.contains('show')) render();
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  document.getElementById('capital').value = '20.000.000';
+  document.getElementById('aporte').value = '0';
+  document.getElementById('ciudad').value = 'concepcion';
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('errorMsg').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.getElementById('ctaBtn').addEventListener('click', () => {
+  alert('¡Genial! Un asesor de Plaza Brokers se pondrá en contacto contigo. (Aquí integrarías ManyChat / WhatsApp / formulario)');
+});
+
+// Auto-cálculo inicial
+render();
+</script>
+
+</body>
+</html>
